@@ -1,14 +1,28 @@
- import { useState } from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <h1 class='text-5xl font-bold underline p-5'>Thomas Crowe</h1>
+    <main className="bg-slate-300/20">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>  
+    </main>
+    
+
+    
+      {/* <h1 class='text-5xl font-bold underline p-5'>Thomas Crowe</h1>
       <h2 class='text-2xl p-5'>Full Stack Developer</h2>
 
       <div class='flex flex-row justify-center items-center'>
@@ -18,7 +32,7 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
+      </div> */}
     </>
   )
 }
