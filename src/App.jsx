@@ -1,5 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import About from './pages/About'
+import Projects from './pages/Projects'
+import Contact from './pages/Contact'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -10,8 +14,8 @@ function App() {
     <div className='bg-slate-300/20'>
       <Router>
         <Navbar />
-        {/* <Routes>
-          <Route path='/' element={<Home />} />
+        <Routes>
+          {/* <Route path='/' element={<Home />} /> */}
           <Route
             path='/*'
             element={
@@ -25,7 +29,7 @@ function App() {
               </>
             }
           />
-        </Routes> */}
+        </Routes>
       </Router>
     </div>
     
