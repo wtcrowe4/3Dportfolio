@@ -14,18 +14,32 @@ import { a } from "@react-spring/three";
 
 import golfBall from "../assets/3D/golf_ball.glb";
 
-const Golfball = (props) => {
-  const golfBallRef = useRef();  
+const Golfball = ({isRotating, setIsRotating, ...props}) => {
+  const golfBallRef = useRef();
+  const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(golfBall);
+
+  const lastX = useRef(0);
+  const rotationSpeed = useRef(0);
+  const handlePointerDown = (e) => {
+    lastX.current = e.clientX;
+    setIsRotating(true);
+  } 
+  const handlePointerUp = () => {
+    setIsRotating(false);
+  }
+
+  
+
   return (
     <a.group {...props} ref={golfBallRef}>
       <a.group rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
-        //   castShadow
-        //   receiveShadow
+
           geometry={nodes.defaultMaterial.geometry}
           material={materials.initialShadingGroup}
           rotation={[Math.PI / 2, 0, 0]}
+          
         />
       </a.group>
     </a.group>
