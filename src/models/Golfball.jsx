@@ -25,11 +25,31 @@ const Golfball = ({isRotating, setIsRotating, ...props}) => {
     lastX.current = e.clientX;
     setIsRotating(true);
   } 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e) => {
     setIsRotating(false);
-  }
+    e.stopProgation();
+    e.preventDeafault();
 
-  
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+
+    const delta = clientX - lastX.current;
+    rotationSpeed.current = delta / viewport.width;
+    golfBallRef.rotation.y += rotationSpeed.current;
+  }
+  const handlePointerMove = (e) => {
+    e.stopProgation();
+    e.preventDeafault();
+    // rotationSpeed.current = (e.clientX - lastX.current) / viewport.width;
+    // lastX.current = e.clientX;
+  }
+  useFrame(() => {
+    if (isRotating) {
+      golfBallRef.current.rotation.y += rotationSpeed.current;
+      rotationSpeed.current *= 0.95;
+    }
+  });
+
+
 
   return (
     <a.group {...props} ref={golfBallRef}>
