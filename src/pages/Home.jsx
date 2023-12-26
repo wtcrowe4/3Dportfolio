@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import Loader from '../components/Loader'
 import Golfball from '../models/Golfball'
+import Island from '../models/Island'
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -23,6 +24,7 @@ const Home = () => {
                     <Golfball position={[0, 0, 0]} rotation={[0.1, 0.1, 0]}
                       isRotating={isRotating}
                       setIsRotating={setIsRotating}/>
+                    {/* <Island /> */}
                 </Suspense>
             
         </Canvas>
