@@ -122,7 +122,7 @@ const Home = () => {
             intensity={1}
           />
 
-          <Bird />
+          {/* <Bird /> */}
           <Sky isRotating={isRotating} />
           <Island
             isRotating={isRotating}
